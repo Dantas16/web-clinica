@@ -7,27 +7,27 @@
       <h6>Dados Pessoais</h6>
     </div>
     <div class="input-field col s2">
-      <input id="codigo" type="text" class="validate" ng-model="paciente.codigo"/>
+      <input readonly id="codigo" type="text" class="validate" ng-model="paciente.codigo"/>
       <label for="codigo">Codigo</label>
     </div>
     <div class="input-field col s7">
-      <input id="nome" type="text" class="validate" ng-model="paciente.nome"/>
+      <input id="nome" type="text" class="validate" ng-model="paciente.no_pessoa"/>
       <label for="nome">Nome</label>
     </div>
     <div class="input-field col s3">
-      <input id="sobrenome" type="text" class="validate" ng-model="paciente.sobrenome"/>
-      <label for="sobrenome">Sobrenome</label>
+      <input id="sobrenome" type="text" class="validate" ng-model="paciente.rg_pessoa"/>
+      <label for="sobrenome">Rg</label>
     </div>
     <div class="input-field col s3">
-      <input id="dtnasc" type="text" class="validate" ng-model="paciente.dtnasc"/>
+      <input id="dtnasc" type="text" class="validate" ng-model="paciente.dt_nasc_pessoa"/>
       <label for="dtnasc">Data de Nascimento</label>
     </div>
     <div class="input-field col s3">
-      <input id="cpf" type="text" class="validate" ng-model="paciente.cpf"/>
+      <input id="cpf" type="text" class="validate" ng-model="paciente.cpf_pessoa"/>
       <label for="cpf">CPF</label>
     </div>
     <div class="input-field col s3">
-      <input id="plano" type="text" class="validate" ng-model="paciente.plano"/>
+      <input id="plano" type="text" class="validate" ng-model="paciente.cod_plano_saude"/>
       <label for="plano">Plano de Saude</label>
     </div>
     <div class="input-field col s9">
