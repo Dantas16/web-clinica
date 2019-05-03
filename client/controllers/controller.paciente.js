@@ -3,7 +3,7 @@ app.controller('PacienteCtrl', function($scope, $http){
     M.AutoInit();
 
     $('#codigo').mask('000000');
-    $('#dtnasc').mask('00/00/0000');
+    $('#dtnasc').mask('00000000');
     $('#cpf').mask('000.000.000-00');
     $('#uf').mask('SS');
     $('#telefone').mask('(00) 00000-0000');
@@ -43,47 +43,33 @@ app.controller('PacienteCtrl', function($scope, $http){
         $scope.pacienteCadastrado = false;     
 
         // TROCAR O NOME DOS ATRIBUTOS LÁ NO NG-MODELS DOS INPUTS E AQUI
-        if($scope.paciente.nome == null || $scope.paciente.nome == ""){
-            M.toast({html: 'Insira o Nome', classes: 'rounded red'})
-        } else if($scope.paciente.sobrenome == null || $scope.paciente.sobrenome == ""){
-            M.toast({html: 'Insira o Sobrenome', classes: 'rounded red'})
-        } else if($scope.paciente.dtnasc == null || $scope.paciente.dtnasc == ""){
-            M.toast({html: 'Insira a Data de Nascimento', classes: 'rounded red'})
-        } else if($scope.paciente.cpf == null || $scope.paciente.cpf == ""){
-            M.toast({html: 'Insira o CPF', classes: 'rounded red'})
-        } else if($scope.paciente.plano == null || $scope.paciente.plano == ""){
-            M.toast({html: 'Selecione o Plano de Saúde', classes: 'rounded red'})
-        } else if($scope.paciente.endereco == null || $scope.paciente.endereco == ""){
-            M.toast({html: 'Insira o Endereço', classes: 'rounded red'})
-        } else if($scope.paciente.cidade == null || $scope.paciente.cidade == ""){
-            M.toast({html: 'Insira a Cidade', classes: 'rounded red'})
-        } else if($scope.paciente.uf == null || $scope.paciente.uf == ""){
-            M.toast({html: 'Insira o UF', classes: 'rounded red'})
-        }else if($scope.paciente.telefone == null || $scope.paciente.telefone == ""){
-            M.toast({html: 'Insira o Telefone', classes: 'rounded red'})
-        }else if($scope.paciente.email == null || $scope.paciente.email == ""){
-            M.toast({html: 'Insira o Email', classes: 'rounded red'})
-        }else{
-            M.toast({html: 'Cadastrado com Sucesso', classes: 'rounded green'})
+        if($scope.paciente.no_pessoa == null || $scope.paciente.no_pessoa == "") {
+            M.toast({html: 'Insira o Nome', classes: 'rounded red'});
 
-            console.log($scope.paciente)
+        } else if($scope.paciente.cpf_pessoa == null || $scope.paciente.cpf_pessoa == "") {
+            M.toast({html: 'Insira o CPF', classes: 'rounded red'});
 
+        } else if($scope.paciente.no_usuario == null || $scope.paciente.no_usuario == "") {
+            M.toast({html: 'Insira um nome de usuário', classes: 'rounded red'});
+
+        } else if ($scope.paciente.sh_usuario == null || $scope.paciente.sh_usuario == "") {
+            M.toast({html: 'Insira uma senha', classes: 'rounded red'});
+        
+        } else {
             const n_paciente = $scope.paciente;
+            console.log(n_paciente);
 
-            $scope.pacientes.push(n_paciente);
-            $scope.paciente = {}
-            
             $http.post("http://localhost:8000/api/pacientes", 
                 { "paciente": n_paciente }, 
                 { headers: {'Content-Type': 'application/json'}})
                 .then(function mySuccess(response) {
 
                     console.warn(response.data.result);
-
+                    $scope.pacientes.push(n_paciente);
+                    // $scope.paciente = {}
                     $scope.pacienteCadastrado = true;
-                }, function myError(response) {
-                    $scope.myWelcome = response.statusText;
-                });
+                    M.toast({html: response.data.result, classes: 'rounded green'});
+                }).erro;
         }
 
     }
