@@ -74,7 +74,6 @@ app.controller('PacienteCtrl', function($scope, $http){
 
     }
 
-
     // Esta função vai retornar um json e alimentar o $scope.paciente, que será exibido em uma tabela atraves de um Ng-Repeat
     function exibirPaciente(){
         $http({
@@ -87,6 +86,6 @@ app.controller('PacienteCtrl', function($scope, $http){
           });
     }
 
-
+    exibirPaciente();
     
 })
