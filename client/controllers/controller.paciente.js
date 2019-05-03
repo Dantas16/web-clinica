@@ -66,7 +66,7 @@ app.controller('PacienteCtrl', function($scope, $http){
 
                     console.warn(response.data.result);
                     $scope.pacientes.push(n_paciente);
-                    // $scope.paciente = {}
+                    $scope.paciente = {}
                     $scope.pacienteCadastrado = true;
                     M.toast({html: response.data.result, classes: 'rounded green'});
                 }).erro;
